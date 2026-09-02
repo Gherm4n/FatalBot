@@ -1,0 +1,2 @@
+"""FatalBot application package."""
+

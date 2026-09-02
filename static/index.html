@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#090b10">
+    <title>FatalBot // Jailbreak Challenge</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <div class="noise"></div>
+    <main class="shell">
+      <header>
+        <div class="brand"><span class="mark">F</span><span id="club-name">Fatal Cybersecurity Club</span></div>
+        <div class="status"><i></i> LOCAL AI ONLINE</div>
+      </header>
+
+      <section class="hero">
+        <div class="eyebrow">INTEGRATION WEEK // JAILBREAK CHALLENGE</div>
+        <h1>Break the bot.<br><span>Capture the flag.</span></h1>
+        <p id="welcome">A secret flag is hidden in FatalBot's instructions. Convince it to reveal the flag and capture it!</p>
+      </section>
+
+      <section class="terminal" aria-label="FatalBot chat">
+        <div class="terminal-bar">
+          <div class="lights"><span></span><span></span><span></span></div>
+          <span>fatalbot@club:~</span>
+          <div class="counter">ATTEMPTS: <b id="attempts">0</b>/<span id="max-attempts">3</span></div>
+        </div>
+        <div id="messages" class="messages" aria-live="polite">
+          <div class="message bot">
+            <div class="avatar">FB</div>
+            <div class="bubble">I have one job: protect the flag. You won't get it out of me. Probably.</div>
+          </div>
+        </div>
+        <form id="chat-form" class="composer">
+          <span class="prompt">›</span>
+          <textarea id="input" rows="1" maxlength="2000" placeholder="Enter your jailbreak prompt..." required></textarea>
+          <button id="send" type="submit" aria-label="Send message">EXECUTE</button>
+        </form>
+      </section>
+
+      <div class="actions">
+        <span>Tip: prompt injection is about convincing a model to ignore its original instructions.</span>
+        <button id="reset" type="button">↻ NEXT PLAYER</button>
+      </div>
+    </main>
+
+    <div id="victory" class="victory" hidden>
+      <div class="victory-card">
+        <div class="trophy">⚑</div>
+        <div class="eyebrow">ACCESS GRANTED</div>
+        <h2>FLAG CAPTURED</h2>
+        <p>You successfully jailbroke FatalBot.</p>
+        <button id="play-again" type="button">NEXT PLAYER</button>
+      </div>
+    </div>
+
+    <div id="failure" class="victory failure" hidden>
+      <div class="victory-card">
+        <div class="trophy">×</div>
+        <div class="eyebrow">ACCESS DENIED</div>
+        <h2>FLAG PROTECTED</h2>
+        <p>Three attempts used. FatalBot kept the flag safe this round.</p>
+        <button id="next-player" type="button">NEXT PLAYER</button>
+      </div>
+    </div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
