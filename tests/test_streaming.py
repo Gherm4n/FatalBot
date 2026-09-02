@@ -40,8 +40,8 @@ class StreamingTests(unittest.IsolatedAsyncioTestCase):
         )
         self.assertTrue(events[-1]["won"])
         self.assertTrue(events[-1]["roundOver"])
+        self.assertEqual(events[-1]["flag"], settings.flag)
 
 
 if __name__ == "__main__":
     unittest.main()
-

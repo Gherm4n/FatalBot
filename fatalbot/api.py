@@ -98,6 +98,7 @@ async def chat(body: ChatRequest) -> StreamingResponse:
                     "attemptsRemaining": settings.max_attempts - attempt.number,
                     "won": won,
                     "roundOver": round_over,
+                    "flag": settings.flag if won else None,
                 }
             )
         except Exception as exc:

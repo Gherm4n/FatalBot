@@ -5,7 +5,9 @@ const send = document.querySelector('#send');
 const attempts = document.querySelector('#attempts');
 const victory = document.querySelector('#victory');
 const failure = document.querySelector('#failure');
+const capturedFlag = document.querySelector('#captured-flag');
 let sessionId = localStorage.getItem('fatalbot-session');
+let resultTimer = null;
 
 function addMessage(text, role) {
   const item = document.createElement('div');
@@ -63,6 +65,9 @@ async function resetGame() {
     attempts.textContent = '0';
     victory.hidden = true;
     failure.hidden = true;
+    if (resultTimer) clearTimeout(resultTimer);
+    resultTimer = null;
+    capturedFlag.textContent = '';
     input.disabled = false;
     send.disabled = false;
     messages.innerHTML = '';
@@ -119,10 +124,12 @@ form.addEventListener('submit', async (event) => {
         attempts.textContent = data.attempts;
         if (data.roundOver) {
           input.disabled = true;
-          setTimeout(() => {
+          if (data.won && data.flag) capturedFlag.textContent = data.flag;
+          resultTimer = setTimeout(() => {
             if (data.won) victory.hidden = false;
             else failure.hidden = false;
-          }, 450);
+            resultTimer = null;
+          }, 3000);
         }
       } else if (data.type === 'error') {
         throw new Error(data.message);
